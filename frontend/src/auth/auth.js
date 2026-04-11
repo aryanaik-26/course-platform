@@ -1,4 +1,6 @@
 import app from "./firebase";
+import db from "./db";
+
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -7,12 +9,23 @@ import {
   onAuthStateChanged
 } from "firebase/auth";
 
+import { doc, setDoc } from "firebase/firestore";
+
 const auth = getAuth(app);
 
-// SIGNUP
+// SIGNUP + STORE USER
 export const signup = async (email, password) => {
   const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-  return userCredential.user;
+
+  const user = userCredential.user;
+
+  // 🔥 Store user in Firestore
+  await setDoc(doc(db, "users", user.uid), {
+    email: user.email,
+    createdAt: new Date()
+  });
+
+  return user;
 };
 
 // LOGIN
@@ -26,7 +39,7 @@ export const logout = async () => {
   await signOut(auth);
 };
 
-// AUTH STATE LISTENER (VERY IMPORTANT 🔥)
+// AUTH STATE (for later use)
 export const observeAuth = (callback) => {
   return onAuthStateChanged(auth, callback);
 };
