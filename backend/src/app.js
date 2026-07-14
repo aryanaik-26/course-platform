@@ -1,17 +1,17 @@
 const express = require("express");
 const cors = require("cors");
-
+const requestRoutes = require("./routes/requestRoutes");
+const authRoutes = require("./routes/authRoutes");
+const userRoutes = require("./routes/userRoutes");
 const app = express();
 
-// Middleware
 app.use(cors());
 app.use(express.json());
-
-// Health Check Route
+app.use("/api/requests", requestRoutes);
 app.get("/", (req, res) => {
-  res.json({
-    message: "SkillForge API is running successfully"
-  });
+  res.send("SkillForge API Running...");
 });
 
+app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
 module.exports = app;
