@@ -1,10 +1,22 @@
 import React from "react";
 import "./Navbar.css";
 import { FaSearch, FaUserCircle } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
+import { logout } from "../services/authService";
 import logo from "../assets/logo.png";
 
-
 function Navbar() {
+
+  const navigate = useNavigate();
+
+  const user = JSON.parse(localStorage.getItem("user"));
+  const token = localStorage.getItem("token");
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login");
+  };
+
   return (
     <nav className="navbar">
 
@@ -14,10 +26,21 @@ function Navbar() {
       </div>
 
       <ul className="nav-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="/explore">Explore</a></li>
-        <li><a href="/requests">Requests</a></li>
-        <li><a href="/dashboard">Dashboard</a></li>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+
+        <li>
+          <Link to="/explore">Explore</Link>
+        </li>
+
+        <li>
+          <Link to="/requests">Requests</Link>
+        </li>
+
+        <li>
+          <Link to="/dashboard">Dashboard</Link>
+        </li>
       </ul>
 
       <div className="navbar-right">
@@ -30,10 +53,30 @@ function Navbar() {
           Become a Mentor
         </button>
 
-        <button className="login-btn">
-          <FaUserCircle />
-          Login
-        </button>
+        {
+          token ? (
+            <>
+              <span className="user-name">
+                Welcome, {user?.name}
+              </span>
+
+              <button
+                className="login-btn"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <button
+              className="login-btn"
+              onClick={() => navigate("/login")}
+            >
+              <FaUserCircle />
+              Login
+            </button>
+          )
+        }
 
       </div>
 

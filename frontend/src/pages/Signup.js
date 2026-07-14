@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Signup.css";
+import { register } from "../services/authService";
 
 function Signup() {
 
@@ -24,17 +25,25 @@ function Signup() {
   };
 
 
-  const handleSubmit = (e) => {
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    e.preventDefault();
+  try {
+    const response = await register(formData);
 
-    console.log("Signup Data:", formData);
+    console.log(response);
 
-    // Firebase authentication will be added here
+    alert("Registration successful");
 
-    navigate("/dashboard");
+    navigate("/login");
 
-  };
+  } catch (error) {
+    alert(
+      error.response?.data?.message ||
+      "Registration failed"
+    );
+  }
+};
 
 
   return (

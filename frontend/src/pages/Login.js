@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
+import { login } from "../services/authService";
 
 function Login() {
 
@@ -20,15 +21,25 @@ function Login() {
   };
 
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    console.log("Login Data:", formData);
+  try {
+    const response = await login(formData);
 
-    // Firebase authentication will be added here
+    console.log(response);
+
+    alert("Login successful");
 
     navigate("/dashboard");
-  };
+
+  } catch (error) {
+    alert(
+      error.response?.data?.message ||
+      "Login failed"
+    );
+  }
+};
 
 
   return (
