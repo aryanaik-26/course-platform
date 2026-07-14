@@ -1,0 +1,177 @@
+.signup-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background: linear-gradient(
+    135deg,
+    #eef2ff,
+    #ffffff
+  );
+}
+
+
+/* Container */
+
+.signup-container {
+  width: 500px;
+  max-width: 100%;
+}
+
+
+
+/* Signup Card */
+
+.signup-card {
+  background: white;
+  padding: 45px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+
+
+/* Heading */
+
+.signup-card h1 {
+  text-align: center;
+  font-size: 34px;
+  color: #1f2937;
+  margin-bottom: 12px;
+}
+
+
+.signup-text {
+  text-align: center;
+  color: #6b7280;
+  font-size: 15px;
+  margin-bottom: 35px;
+}
+
+
+
+/* Input Fields */
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+
+.input-group label {
+  display: block;
+  color: #374151;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+
+.input-group input,
+.input-group select {
+
+  width: 100%;
+  padding: 14px 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 15px;
+  outline: none;
+  background: white;
+  transition: 0.3s;
+
+}
+
+
+.input-group input:focus,
+.input-group select:focus {
+
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79,70,229,0.15);
+
+}
+
+
+
+/* Button */
+
+.signup-btn {
+
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 10px;
+
+  background: #4f46e5;
+  color: white;
+
+  font-size: 17px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.3s;
+
+}
+
+
+.signup-btn:hover {
+
+  background: #4338ca;
+
+}
+
+
+
+/* Footer */
+
+.signup-footer {
+
+  text-align: center;
+  margin-top: 25px;
+
+}
+
+
+.signup-footer p {
+
+  color: #6b7280;
+
+}
+
+
+.signup-footer a {
+
+  color: #4f46e5;
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 5px;
+
+}
+
+
+.signup-footer a:hover {
+
+  text-decoration: underline;
+
+}
+
+
+
+/* Responsive */
+
+@media(max-width:600px) {
+
+  .signup-card {
+
+    padding: 30px 25px;
+
+  }
+
+
+  .signup-card h1 {
+
+    font-size: 28px;
+
+  }
+
+}

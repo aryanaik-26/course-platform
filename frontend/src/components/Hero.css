@@ -1,0 +1,653 @@
+/* ===========================
+   HERO SECTION
+=========================== */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #EEF2FF 0%, #F8FAFC 55%, #FFFFFF 100%);
+    display: flex;
+    align-items: center;
+    padding: 90px 8%;
+}
+
+/* ===========================
+   CONTAINER
+=========================== */
+
+.hero-container {
+    width: 100%;
+    max-width: 1400px;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+
+    position: relative;
+    z-index: 2;
+}
+
+/* ===========================
+   LEFT CONTENT
+=========================== */
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-badge {
+    display: inline-block;
+
+    padding: 10px 18px;
+
+    border-radius: 30px;
+
+    background: rgba(99, 102, 241, .12);
+
+    color: #5B4BFF;
+
+    font-weight: 600;
+
+    margin-bottom: 25px;
+
+    border: 1px solid rgba(99,102,241,.15);
+}
+
+.hero-content h1 {
+
+    font-size: 4rem;
+
+    line-height: 1.2;
+
+    color: #1E293B;
+
+    margin-bottom: 25px;
+
+    font-weight: 700;
+
+}
+
+.hero-content h1 span {
+
+    color: #6366F1;
+
+}
+
+.hero-content p {
+
+    font-size: 18px;
+
+    line-height: 1.9;
+
+    color: #64748B;
+
+    max-width: 600px;
+
+    margin-bottom: 40px;
+
+}
+
+/* ===========================
+   BUTTONS
+=========================== */
+
+.hero-buttons {
+
+    display: flex;
+
+    gap: 20px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 60px;
+
+}
+
+.primary-btn {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 16px 34px;
+
+    border: none;
+
+    border-radius: 50px;
+
+    background: linear-gradient(135deg,#6366F1,#8B5CF6);
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .4s;
+
+    box-shadow: 0 15px 35px rgba(99,102,241,.35);
+
+}
+
+.primary-btn:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow: 0 20px 45px rgba(99,102,241,.45);
+
+}
+
+.secondary-btn {
+
+    padding: 16px 34px;
+
+    border-radius: 50px;
+
+    background: white;
+
+    color: #6366F1;
+
+    border: 2px solid #6366F1;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .4s;
+
+}
+
+.secondary-btn:hover {
+
+    background: #6366F1;
+
+    color: white;
+
+    transform: translateY(-5px);
+
+}
+
+/* ===========================
+   HERO IMAGE
+=========================== */
+
+.hero-image {
+
+    flex: 1;
+
+    display: flex;
+
+    justify-content: center;
+
+    position: relative;
+
+}
+
+.hero-image img {
+
+    width: 100%;
+
+    max-width: 620px;
+
+    animation: floatImage 5s ease-in-out infinite;
+
+}
+
+/* ===========================
+   FLOATING BLOBS
+=========================== */
+
+.blob {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(60px);
+
+    opacity: .45;
+
+    z-index: 0;
+
+}
+
+.blob1 {
+
+    width: 320px;
+
+    height: 320px;
+
+    background: #8B5CF6;
+
+    top: -120px;
+
+    left: -120px;
+
+    animation: blobMove 8s infinite alternate;
+
+}
+
+.blob2 {
+
+    width: 260px;
+
+    height: 260px;
+
+    background: #06B6D4;
+
+    right: 5%;
+
+    top: 12%;
+
+    animation: blobMove 9s infinite alternate-reverse;
+
+}
+
+.blob3 {
+
+    width: 220px;
+
+    height: 220px;
+
+    background: #6366F1;
+
+    bottom: 0;
+
+    left: 45%;
+
+    animation: blobMove 7s infinite alternate;
+
+}
+
+/* ===========================
+   ANIMATIONS
+=========================== */
+
+@keyframes floatImage {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-18px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
+}
+
+@keyframes blobMove {
+
+    from {
+        transform: translate(0,0) scale(1);
+    }
+
+    to {
+        transform: translate(40px,-30px) scale(1.15);
+    }
+
+}
+/* ===========================
+   HERO STATISTICS
+=========================== */
+
+.hero-stats{
+
+    display:flex;
+    gap:25px;
+    flex-wrap:wrap;
+
+}
+
+.stat-card{
+
+    background:rgba(255,255,255,.85);
+
+    backdrop-filter:blur(12px);
+
+    padding:22px;
+
+    width:170px;
+
+    border-radius:20px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+    text-align:center;
+
+    transition:.4s;
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 25px 45px rgba(99,102,241,.18);
+
+}
+
+.stat-icon{
+
+    font-size:34px;
+
+    color:#6366F1;
+
+    margin-bottom:12px;
+
+}
+
+.stat-card h2{
+
+    font-size:28px;
+
+    color:#1E293B;
+
+    margin-bottom:6px;
+
+}
+
+.stat-card p{
+
+    color:#64748B;
+
+    font-size:15px;
+
+}
+
+/* ===========================
+   FLOATING GLASS CARDS
+=========================== */
+
+.floating-card{
+
+    position:absolute;
+
+    background:rgba(255,255,255,.9);
+
+    backdrop-filter:blur(15px);
+
+    padding:18px 22px;
+
+    border-radius:18px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.12);
+
+    animation:floatCard 4s ease-in-out infinite;
+
+}
+
+.mentor-card{
+
+    top:8%;
+
+    left:-40px;
+
+}
+
+.student-card{
+
+    right:-25px;
+
+    bottom:12%;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:#6366F1;
+
+    font-weight:600;
+
+}
+
+.mentor-card h4{
+
+    color:#6366F1;
+
+    margin-bottom:8px;
+
+}
+
+.mentor-card p{
+
+    font-weight:600;
+
+    color:#1E293B;
+
+    margin-bottom:4px;
+
+}
+
+.mentor-card small{
+
+    color:#64748B;
+
+}
+
+.student-card svg{
+
+    color:#FACC15;
+
+    font-size:20px;
+
+}
+
+/* ===========================
+   SVG WAVE
+=========================== */
+
+.wave{
+
+    position:absolute;
+
+    bottom:0;
+
+    left:0;
+
+    width:100%;
+
+    line-height:0;
+
+}
+
+/* ===========================
+   ANIMATION
+=========================== */
+
+@keyframes floatCard{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-12px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:1100px){
+
+.hero-container{
+
+flex-direction:column-reverse;
+
+text-align:center;
+
+}
+
+.hero-content p{
+
+margin:auto;
+
+margin-bottom:40px;
+
+}
+
+.hero-buttons{
+
+justify-content:center;
+
+}
+
+.hero-stats{
+
+justify-content:center;
+
+}
+
+.hero-image{
+
+margin-bottom:50px;
+
+}
+
+.mentor-card{
+
+left:0;
+
+}
+
+.student-card{
+
+right:0;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.hero{
+
+padding:70px 6%;
+
+}
+
+.hero-content h1{
+
+font-size:2.8rem;
+
+}
+
+.hero-content p{
+
+font-size:16px;
+
+}
+
+.hero-image img{
+
+max-width:420px;
+
+}
+
+.hero-stats{
+
+gap:15px;
+
+}
+
+.stat-card{
+
+width:150px;
+
+padding:18px;
+
+}
+
+.floating-card{
+
+display:none;
+
+}
+
+}
+
+@media(max-width:500px){
+
+.hero{
+
+min-height:auto;
+
+padding:60px 5%;
+
+}
+
+.hero-content h1{
+
+font-size:2.2rem;
+
+}
+
+.hero-badge{
+
+font-size:14px;
+
+}
+
+.primary-btn,
+.secondary-btn{
+
+width:100%;
+
+justify-content:center;
+
+}
+
+.hero-buttons{
+
+flex-direction:column;
+
+}
+
+.hero-stats{
+
+flex-direction:column;
+
+align-items:center;
+
+}
+
+.stat-card{
+
+width:220px;
+
+}
+
+.hero-image img{
+
+max-width:320px;
+
+}
+
+}

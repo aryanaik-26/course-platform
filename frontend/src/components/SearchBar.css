@@ -1,0 +1,406 @@
+/* ==========================================
+   SEARCH SECTION
+========================================== */
+
+.search-section{
+    width:90%;
+    max-width:1250px;
+    margin:80px auto;
+    text-align:center;
+}
+
+.search-header h2{
+    font-size:40px;
+    color:#1E293B;
+    margin-bottom:15px;
+}
+
+.search-header p{
+    color:#64748B;
+    font-size:17px;
+    margin-bottom:45px;
+}
+
+/* ==========================================
+   SEARCH CONTAINER
+========================================== */
+
+.search-container{
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+
+    background:rgba(255,255,255,.95);
+
+    padding:20px;
+
+    border-radius:22px;
+
+    backdrop-filter:blur(15px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.08);
+
+    flex-wrap:wrap;
+
+}
+
+/* ==========================================
+   INPUT BOX
+========================================== */
+
+.input-box{
+
+    flex:1;
+
+    min-width:220px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    background:#F8FAFC;
+
+    padding:16px 18px;
+
+    border-radius:15px;
+
+    transition:.35s;
+
+    border:2px solid transparent;
+
+}
+
+.input-box:hover{
+
+    border-color:#6366F1;
+
+    box-shadow:0 10px 25px rgba(99,102,241,.12);
+
+}
+
+.input-icon{
+
+    color:#6366F1;
+
+    font-size:18px;
+
+}
+
+.input-box input,
+.input-box select{
+
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    background:transparent;
+
+    font-size:15px;
+
+    color:#1E293B;
+
+    font-family:"Poppins",sans-serif;
+
+}
+
+.input-box input::placeholder{
+
+    color:#94A3B8;
+
+}
+
+.select-box select{
+
+    cursor:pointer;
+
+}
+
+/* ==========================================
+   SEARCH BUTTON
+========================================== */
+
+.search-btn{
+
+    padding:17px 34px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:linear-gradient(135deg,#6366F1,#8B5CF6);
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    box-shadow:0 12px 30px rgba(99,102,241,.30);
+
+}
+
+.search-btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 18px 35px rgba(99,102,241,.40);
+
+}
+/* ==========================================
+   INPUT FOCUS EFFECT
+========================================== */
+
+.input-box:focus-within{
+
+    border:2px solid #6366F1;
+
+    background:#FFFFFF;
+
+    box-shadow:0 15px 35px rgba(99,102,241,.18);
+
+    transform:translateY(-2px);
+
+}
+
+.input-box:focus-within .input-icon{
+
+    color:#4F46E5;
+
+    transform:scale(1.1);
+
+    transition:.3s;
+
+}
+
+/* ==========================================
+   GRADIENT BACKGROUND DECORATION
+========================================== */
+
+.search-section{
+
+    position:relative;
+
+}
+
+.search-section::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:220px;
+
+    height:220px;
+
+    background:rgba(99,102,241,.08);
+
+    border-radius:50%;
+
+    top:-60px;
+
+    left:-60px;
+
+    filter:blur(40px);
+
+    z-index:-1;
+
+}
+
+.search-section::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:250px;
+
+    height:250px;
+
+    background:rgba(139,92,246,.08);
+
+    border-radius:50%;
+
+    bottom:-70px;
+
+    right:-70px;
+
+    filter:blur(50px);
+
+    z-index:-1;
+
+}
+
+/* ==========================================
+   INPUT PLACEHOLDER
+========================================== */
+
+input::placeholder{
+
+    transition:.3s;
+
+}
+
+input:focus::placeholder{
+
+    opacity:.5;
+
+}
+
+/* ==========================================
+   BUTTON ACTIVE
+========================================== */
+
+.search-btn:active{
+
+    transform:scale(.96);
+
+}
+
+/* ==========================================
+   SMOOTH ANIMATION
+========================================== */
+
+.search-container{
+
+    animation:fadeUp .8s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:992px){
+
+.search-container{
+
+flex-direction:column;
+
+align-items:stretch;
+
+}
+
+.input-box{
+
+width:100%;
+
+}
+
+.search-btn{
+
+width:100%;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.search-section{
+
+margin:60px auto;
+
+}
+
+.search-header h2{
+
+font-size:30px;
+
+}
+
+.search-header p{
+
+font-size:15px;
+
+margin-bottom:30px;
+
+}
+
+.search-container{
+
+padding:18px;
+
+gap:16px;
+
+}
+
+.input-box{
+
+padding:14px 16px;
+
+}
+
+.search-btn{
+
+padding:15px;
+
+font-size:15px;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.search-header h2{
+
+font-size:25px;
+
+}
+
+.search-header p{
+
+font-size:14px;
+
+}
+
+.input-box{
+
+min-width:100%;
+
+}
+
+.input-box input,
+.input-box select{
+
+font-size:14px;
+
+}
+
+.search-btn{
+
+font-size:14px;
+
+}
+
+}
