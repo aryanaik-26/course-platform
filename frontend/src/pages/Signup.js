@@ -3,70 +3,75 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Signup.css";
 
 function Signup() {
-
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
-    role: "learner"
+    role: "learner",
   });
 
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
-
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
-
   };
 
-
-  const handleSubmit = (e) => {
-
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
-    console.log("Signup Data:", formData);
+    try {
+      const response = await fetch("http://localhost:5000/api/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    // Firebase authentication will be added here
+      const data = await response.json();
 
-    navigate("/dashboard");
+      if (response.ok) {
+        alert("Account created successfully!");
 
+        if (data.token) {
+          localStorage.setItem("token", data.token);
+        }
+
+        if (data.user) {
+          localStorage.setItem("user", JSON.stringify(data.user));
+        }
+
+        navigate("/dashboard");
+      } else {
+        alert(data.message || "Signup failed");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Server Error. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
   };
-
 
   return (
-
     <div className="signup-page">
-
-
       <div className="signup-container">
-
-
         <div className="signup-card">
-
-
-          <h1>
-            Create Account 🚀
-          </h1>
-
+          <h1>Create Account 🚀</h1>
 
           <p className="signup-text">
             Join our skill community and start learning or teaching today.
           </p>
 
-
-
           <form onSubmit={handleSubmit}>
-
-
             <div className="input-group">
-
-              <label>
-                Full Name
-              </label>
+              <label>Full Name</label>
 
               <input
                 type="text"
@@ -76,17 +81,10 @@ function Signup() {
                 onChange={handleChange}
                 required
               />
-
             </div>
 
-
-
-
             <div className="input-group">
-
-              <label>
-                Email
-              </label>
+              <label>Email</label>
 
               <input
                 type="email"
@@ -96,17 +94,10 @@ function Signup() {
                 onChange={handleChange}
                 required
               />
-
             </div>
 
-
-
-
             <div className="input-group">
-
-              <label>
-                Password
-              </label>
+              <label>Password</label>
 
               <input
                 type="password"
@@ -116,80 +107,40 @@ function Signup() {
                 onChange={handleChange}
                 required
               />
-
             </div>
 
-
-
-
             <div className="input-group">
-
-              <label>
-                Join As
-              </label>
-
+              <label>Join As</label>
 
               <select
                 name="role"
                 value={formData.role}
                 onChange={handleChange}
               >
-
-                <option value="learner">
-                  Learner
-                </option>
-
-
-                <option value="mentor">
-                  Mentor
-                </option>
-
-
+                <option value="learner">Learner</option>
+                <option value="mentor">Mentor</option>
               </select>
-
             </div>
-
-
-
 
             <button
               type="submit"
               className="signup-btn"
+              disabled={loading}
             >
-              Sign Up
+              {loading ? "Creating Account..." : "Sign Up"}
             </button>
-
-
-
           </form>
 
-
-
-
           <div className="signup-footer">
-
             <p>
-              Already have an account?
-              <Link to="/login">
-                Login
-              </Link>
+              Already have an account?{" "}
+              <Link to="/login">Login</Link>
             </p>
-
           </div>
-
-
-
         </div>
-
-
       </div>
-
-
     </div>
-
   );
-
 }
-
 
 export default Signup;
