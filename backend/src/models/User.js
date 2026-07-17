@@ -40,6 +40,20 @@ const userSchema = new mongoose.Schema(
         type: String,
       },
     ],
+    location: {
+  type: String,
+  default: ""
+},
+
+experience: {
+  type: String,
+  default: ""
+},
+
+rating: {
+  type: Number,
+  default: 5
+},
 
     profilePicture: {
       type: String,

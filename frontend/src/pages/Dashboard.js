@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Dashboard.css";
 
 import {
@@ -6,19 +6,55 @@ import {
   FaBookOpen,
   FaClock,
   FaCheckCircle,
-  FaCalendarAlt,
   FaArrowRight,
 } from "react-icons/fa";
 
+import { getRequests } from "../services/requestService";
+import { getMentors } from "../services/userService";
+
 function Dashboard() {
+  const [requests, setRequests] = useState([]);
+  const [mentors, setMentors] = useState([]);
+
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    try {
+      const requestData = await getRequests();
+      const mentorData = await getMentors();
+
+      setRequests(requestData);
+      setMentors(mentorData);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const acceptedRequests = requests.filter(
+    (r) => r.status === "accepted"
+  );
+
+  const pendingRequests = requests.filter(
+    (r) => r.status === "pending"
+  );
+
   return (
     <div className="dashboard">
 
       <div className="dashboard-header">
 
         <div>
-          <h1>Welcome back, Arya 👋</h1>
-          <p>Continue your learning journey with SkillSync.</p>
+          <h1>
+            Welcome back, {user?.name || "User"} 👋
+          </h1>
+
+          <p>
+            Continue your learning journey with SkillSync.
+          </p>
         </div>
 
         <button className="dashboard-btn">
@@ -32,148 +68,32 @@ function Dashboard() {
       <div className="stats-grid">
 
         <div className="stat-box">
-
-          <FaBookOpen className="stat-icon"/>
-
-          <h2>12</h2>
-
-          <p>Skills Learning</p>
-
+          <FaBookOpen className="stat-icon" />
+          <h2>{requests.length}</h2>
+          <p>Total Requests</p>
         </div>
 
         <div className="stat-box">
-
-          <FaUserGraduate className="stat-icon"/>
-
-          <h2>8</h2>
-
-          <p>Mentors Connected</p>
-
+          <FaUserGraduate className="stat-icon" />
+          <h2>{mentors.length}</h2>
+          <p>Available Mentors</p>
         </div>
 
         <div className="stat-box">
-
-          <FaClock className="stat-icon"/>
-
-          <h2>42 hrs</h2>
-
-          <p>Learning Hours</p>
-
+          <FaClock className="stat-icon" />
+          <h2>{pendingRequests.length}</h2>
+          <p>Pending Requests</p>
         </div>
 
         <div className="stat-box">
-
-          <FaCheckCircle className="stat-icon"/>
-
-          <h2>16</h2>
-
-          <p>Completed Sessions</p>
-
+          <FaCheckCircle className="stat-icon" />
+          <h2>{acceptedRequests.length}</h2>
+          <p>Accepted Requests</p>
         </div>
 
       </div>
 
-      {/* Main Content */}
-
-      <div className="dashboard-content">
-
-        {/* Upcoming Sessions */}
-
-        <div className="dashboard-card">
-
-          <h2>Upcoming Sessions</h2>
-
-          <div className="session">
-
-            <div>
-
-              <h3>React Development</h3>
-
-              <p>Sarah Johnson</p>
-
-            </div>
-
-            <span>Today 6 PM</span>
-
-          </div>
-
-          <div className="session">
-
-            <div>
-
-              <h3>Machine Learning</h3>
-
-              <p>Michael Lee</p>
-
-            </div>
-
-            <span>Tomorrow</span>
-
-          </div>
-
-          <button>
-
-            View All
-
-            <FaArrowRight/>
-
-          </button>
-
-        </div>
-
-        {/* Progress */}
-
-        <div className="dashboard-card">
-
-          <h2>Learning Progress</h2>
-
-          <div className="progress-box">
-
-            <p>React Development</p>
-
-            <div className="progress-bar">
-
-              <div className="progress react"></div>
-
-            </div>
-
-            <span>80%</span>
-
-          </div>
-
-          <div className="progress-box">
-
-            <p>UI/UX Design</p>
-
-            <div className="progress-bar">
-
-              <div className="progress design"></div>
-
-            </div>
-
-            <span>65%</span>
-
-          </div>
-
-          <div className="progress-box">
-
-            <p>Machine Learning</p>
-
-            <div className="progress-bar">
-
-              <div className="progress ai"></div>
-
-            </div>
-
-            <span>45%</span>
-
-          </div>
-
-        </div>
-
-      </div>
-
-      {/* Requests */}
+      {/* Recent Requests */}
 
       <div className="dashboard-card requests">
 
@@ -182,58 +102,49 @@ function Dashboard() {
         <table>
 
           <thead>
-
             <tr>
-
               <th>Mentor</th>
-
               <th>Skill</th>
-
               <th>Status</th>
-
               <th>Date</th>
-
             </tr>
-
           </thead>
 
           <tbody>
 
-            <tr>
+            {requests.length > 0 ? (
 
-              <td>Sarah Johnson</td>
+              requests.slice(0, 5).map((request) => (
+                <tr key={request._id}>
 
-              <td>React</td>
+                  <td>
+                    {request.mentor?.name || "Mentor"}
+                  </td>
 
-              <td className="accepted">Accepted</td>
+                  <td>{request.skill}</td>
 
-              <td>10 July</td>
+                  <td className={request.status}>
+                    {request.status}
+                  </td>
 
-            </tr>
+                  <td>
+                    {new Date(
+                      request.createdAt
+                    ).toLocaleDateString()}
+                  </td>
 
-            <tr>
+                </tr>
+              ))
 
-              <td>Michael Lee</td>
+            ) : (
 
-              <td>AI</td>
+              <tr>
+                <td colSpan="4">
+                  No requests found
+                </td>
+              </tr>
 
-              <td className="pending">Pending</td>
-
-              <td>12 July</td>
-
-            </tr>
-
-            <tr>
-
-              <td>Emma Watson</td>
-
-              <td>Graphic Design</td>
-
-              <td className="completed">Completed</td>
-
-              <td>05 July</td>
-
-            </tr>
+            )}
 
           </tbody>
 
