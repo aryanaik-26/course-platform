@@ -1,0 +1,10 @@
+import {
+  FaBookOpen,
+  FaChalkboardTeacher,
+  FaClock,
+  FaHandshake,
+  FaCalendarAlt,
+  FaFire,
+  FaMedal,
+  FaCheckCircle
+} from "react-icons/fa";

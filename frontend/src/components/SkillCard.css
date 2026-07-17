@@ -1,473 +1,141 @@
-/* ==========================================
-   MENTOR SECTION
-========================================== */
+.skill-card{
 
-.mentor-section{
+background:white;
 
-    width:90%;
-    max-width:1400px;
+border-radius:25px;
 
-    margin:120px auto;
+padding:30px;
 
-}
+text-align:center;
 
-.mentor-heading{
+box-shadow:0 15px 35px rgba(0,0,0,.08);
 
-    text-align:center;
+transition:.35s;
 
-    margin-bottom:60px;
+overflow:hidden;
 
-}
-
-.mentor-heading span{
-
-    color:#6366F1;
-
-    font-weight:600;
-
-    letter-spacing:1px;
-
-    text-transform:uppercase;
+position:relative;
 
 }
 
-.mentor-heading h2{
+.skill-card:hover{
 
-    font-size:42px;
+transform:translateY(-10px);
 
-    color:#1E293B;
-
-    margin:15px 0;
+box-shadow:0 25px 45px rgba(91,75,255,.18);
 
 }
 
-.mentor-heading p{
+.skill-card::before{
 
-    max-width:700px;
+content:"";
 
-    margin:auto;
+position:absolute;
 
-    color:#64748B;
+width:180px;
 
-    font-size:17px;
+height:180px;
 
-    line-height:1.8;
+background:rgba(91,75,255,.05);
 
-}
+border-radius:50%;
 
-/* ==========================================
-   GRID
-========================================== */
+top:-90px;
 
-.mentor-grid{
-
-    display:grid;
-
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-
-    gap:35px;
+right:-90px;
 
 }
 
-/* ==========================================
-   CARD
-========================================== */
+.skill-icon{
 
-.mentor-card{
+width:80px;
 
-    background:white;
+height:80px;
 
-    border-radius:25px;
+border-radius:50%;
 
-    overflow:hidden;
-
-    box-shadow:0 12px 35px rgba(0,0,0,.08);
-
-    transition:.4s;
-
-    position:relative;
-
-}
-
-.mentor-card:hover{
-
-    transform:translateY(-12px);
-
-    box-shadow:0 25px 50px rgba(99,102,241,.18);
-
-}
-
-/* ==========================================
-   IMAGE
-========================================== */
-
-.mentor-image{
-
-    position:relative;
-
-    overflow:hidden;
-
-}
-
-.mentor-image img{
-
-    width:100%;
-
-    height:280px;
-
-    object-fit:cover;
-
-    transition:.4s;
-
-}
-
-.mentor-card:hover .mentor-image img{
-
-    transform:scale(1.08);
-
-}
-
-/* ==========================================
-   RATING
-========================================== */
-
-.rating{
-
-    position:absolute;
-
-    top:18px;
-
-    right:18px;
-
-    background:white;
-
-    color:#F59E0B;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:6px;
-
-    padding:8px 14px;
-
-    border-radius:30px;
-
-    font-size:14px;
-
-    font-weight:600;
-
-    box-shadow:0 8px 20px rgba(0,0,0,.12);
-
-}
-
-/* ==========================================
-   CONTENT
-========================================== */
-
-.mentor-content{
-
-    padding:25px;
-
-}
-
-.mentor-content h3{
-
-    color:#1E293B;
-
-    font-size:24px;
-
-    margin-bottom:8px;
-
-}
-
-.mentor-content h4{
-
-    color:#6366F1;
-
-    margin-bottom:18px;
-
-    font-weight:600;
-
-}
-
-.mentor-content p{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:10px;
-
-    color:#64748B;
-
-    margin-bottom:12px;
-
-    font-size:15px;
-
-}
-/* ==========================================
-   FOOTER
-========================================== */
-
-.mentor-footer{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-top:25px;
-
-    padding-top:20px;
-
-    border-top:1px solid #E5E7EB;
-
-}
-
-.mentor-footer span{
-
-    color:#64748B;
-
-    font-size:14px;
-
-    font-weight:500;
-
-}
-
-/* ==========================================
-   BUTTON
-========================================== */
-
-.mentor-footer button{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    border:none;
-
-    outline:none;
-
-    background:linear-gradient(135deg,#6366F1,#8B5CF6);
-
-    color:white;
-
-    padding:12px 20px;
-
-    border-radius:30px;
-
-    cursor:pointer;
-
-    font-size:14px;
-
-    font-weight:600;
-
-    transition:.35s;
-
-    box-shadow:0 10px 25px rgba(99,102,241,.25);
-
-}
-
-.mentor-footer button:hover{
-
-    transform:translateY(-4px);
-
-    box-shadow:0 18px 35px rgba(99,102,241,.35);
-
-}
-
-.mentor-footer button svg{
-
-    transition:.3s;
-
-}
-
-.mentor-footer button:hover svg{
-
-    transform:translateX(5px);
-
-}
-
-/* ==========================================
-   ICONS
-========================================== */
-
-.mentor-content p svg{
-
-    color:#6366F1;
-
-    min-width:18px;
-
-}
-
-/* ==========================================
-   HOVER OVERLAY
-========================================== */
-
-.mentor-card::before{
-
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    background:linear-gradient(
-        to top,
-        rgba(99,102,241,.08),
-        transparent
-    );
-
-    opacity:0;
-
-    transition:.4s;
-
-    pointer-events:none;
-
-}
-
-.mentor-card:hover::before{
-
-    opacity:1;
-
-}
-
-/* ==========================================
-   FADE ANIMATION
-========================================== */
-
-.mentor-card{
-
-    animation:fadeUp .7s ease;
-
-}
-
-@keyframes fadeUp{
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(35px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
-
-}
-
-/* ==========================================
-   RESPONSIVE
-========================================== */
-
-@media(max-width:992px){
-
-.mentor-heading h2{
-
-font-size:34px;
-
-}
-
-.mentor-grid{
-
-grid-template-columns:repeat(2,1fr);
-
-}
-
-}
-
-@media(max-width:768px){
-
-.mentor-section{
-
-margin:80px auto;
-
-}
-
-.mentor-grid{
-
-grid-template-columns:1fr;
-
-}
-
-.mentor-heading h2{
-
-font-size:30px;
-
-}
-
-.mentor-heading p{
-
-font-size:15px;
-
-}
-
-.mentor-image img{
-
-height:240px;
-
-}
-
-.mentor-content{
-
-padding:22px;
-
-}
-
-}
-
-@media(max-width:480px){
-
-.mentor-heading h2{
-
-font-size:26px;
-
-}
-
-.mentor-content h3{
-
-font-size:21px;
-
-}
-
-.mentor-content h4{
-
-font-size:17px;
-
-}
-
-.mentor-content p{
-
-font-size:14px;
-
-}
-
-.mentor-footer{
-
-flex-direction:column;
-
-gap:15px;
-
-align-items:flex-start;
-
-}
-
-.mentor-footer button{
-
-width:100%;
+display:flex;
 
 justify-content:center;
 
+align-items:center;
+
+margin:auto;
+
+font-size:34px;
+
+color:white;
+
+margin-bottom:20px;
+
 }
+
+.skill-card h3{
+
+font-size:24px;
+
+margin-bottom:20px;
+
+color:#222;
+
+}
+
+.skill-info{
+
+display:flex;
+
+justify-content:space-between;
+
+margin-bottom:30px;
+
+}
+
+.skill-info div{
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+color:#666;
+
+font-weight:500;
+
+}
+
+.skill-btn{
+
+width:100%;
+
+padding:14px;
+
+border:none;
+
+border-radius:15px;
+
+background:linear-gradient(135deg,#5B4BFF,#8F7CFF);
+
+color:white;
+
+font-size:16px;
+
+font-weight:600;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+gap:10px;
+
+transition:.3s;
+
+}
+
+.skill-btn:hover{
+
+transform:translateY(-3px);
 
 }

@@ -1,102 +1,270 @@
 import React, { useState } from "react";
 import "./Explore.css";
 
+import UserCard from "../components/UserCard";
+
 import {
   FaSearch,
+  FaFilter,
   FaMapMarkerAlt,
-  FaStar,
-  FaClock,
+  FaStar
 } from "react-icons/fa";
 
-import mentors from "../data/mentors";
+/* ===================================
+        SAMPLE USERS
+=================================== */
+
+const users = [
+
+  {
+    id: 1,
+    name: "Arya S",
+    image: "https://randomuser.me/api/portraits/women/44.jpg",
+    location: "Mangalore",
+    rating: 4.9,
+    teachSkills: ["React", "HTML", "CSS"],
+    learnSkills: ["Node.js", "MongoDB"],
+    category: "Programming"
+  },
+
+  {
+    id: 2,
+    name: "Rahul Kumar",
+    image: "https://randomuser.me/api/portraits/men/32.jpg",
+    location: "Bangalore",
+    rating: 4.8,
+    teachSkills: ["Python", "Machine Learning"],
+    learnSkills: ["React"],
+    category: "Programming"
+  },
+
+  {
+    id: 3,
+    name: "Sneha Patel",
+    image: "https://randomuser.me/api/portraits/women/65.jpg",
+    location: "Mysore",
+    rating: 5.0,
+    teachSkills: ["Photography"],
+    learnSkills: ["Video Editing"],
+    category: "Photography"
+  },
+
+  {
+    id: 4,
+    name: "Ananya Rao",
+    image: "https://randomuser.me/api/portraits/women/25.jpg",
+    location: "Udupi",
+    rating: 4.7,
+    teachSkills: ["UI/UX"],
+    learnSkills: ["React"],
+    category: "Design"
+  },
+
+  {
+    id: 5,
+    name: "Vikram Singh",
+    image: "https://randomuser.me/api/portraits/men/56.jpg",
+    location: "Mangalore",
+    rating: 4.6,
+    teachSkills: ["Java"],
+    learnSkills: ["Cloud"],
+    category: "Programming"
+  }
+
+];
 
 function Explore() {
 
   const [search, setSearch] = useState("");
 
-  const filteredMentors = mentors.filter((mentor) =>
-    mentor.skill.toLowerCase().includes(search.toLowerCase()) ||
-    mentor.name.toLowerCase().includes(search.toLowerCase())
-  );
+  const [category, setCategory] = useState("All");
+
+  const filteredUsers = users.filter((user) => {
+
+    const matchesSearch =
+      user.name.toLowerCase().includes(search.toLowerCase()) ||
+      user.teachSkills.join(" ").toLowerCase().includes(search.toLowerCase());
+
+    const matchesCategory =
+      category === "All" ||
+      user.category === category;
+
+    return matchesSearch && matchesCategory;
+
+  });
 
   return (
+
     <div className="explore">
 
-      <div className="explore-header">
+      <div className="container">
 
-        <h1>Explore Mentors</h1>
+        {/* Continue in Part A2 */}
+                {/* ===========================
+              PAGE HEADER
+        =========================== */}
 
-        <p>
-          Find experienced mentors from different domains and start learning today.
-        </p>
+        <section className="explore-header">
 
-      </div>
+          <h1>Explore Skill Partners</h1>
 
-      {/* Search */}
+          <p>
+            Discover talented people who can teach you new skills
+            and connect with learners from different fields.
+          </p>
 
-      <div className="explore-search">
+        </section>
 
-        <FaSearch className="search-icon" />
+        {/* ===========================
+              SEARCH & FILTERS
+        =========================== */}
 
-        <input
-          type="text"
-          placeholder="Search mentors or skills..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
+        <section className="filter-section">
 
-      </div>
+          <div className="search-box">
 
-      {/* Mentor Grid */}
+            <FaSearch className="search-icon" />
 
-      <div className="explore-grid">
+            <input
+              type="text"
+              placeholder="Search by name or skill..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
 
-        {filteredMentors.map((mentor) => (
+          </div>
 
-          <div className="explore-card" key={mentor.id}>
+          <div className="filter-group">
 
-            <img src={mentor.image} alt={mentor.name} />
+            <div className="filter-item">
 
-            <div className="explore-content">
+              <FaFilter />
 
-              <h2>{mentor.name}</h2>
+              <select
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+              >
 
-              <h3>{mentor.skill}</h3>
+                <option value="All">
+                  All Categories
+                </option>
 
-              <p>
-                <FaMapMarkerAlt />
-                {mentor.location}
-              </p>
+                <option value="Programming">
+                  Programming
+                </option>
 
-              <p>
-                <FaClock />
-                {mentor.experience}
-              </p>
+                <option value="Design">
+                  Design
+                </option>
 
-              <div className="rating">
+                <option value="Photography">
+                  Photography
+                </option>
 
-                <FaStar />
+              </select>
 
-                {mentor.rating}
+            </div>
 
-              </div>
+            <div className="filter-item">
 
-              <button>
+              <FaMapMarkerAlt />
 
-                Request Mentor
+              <select>
 
-              </button>
+                <option>All Locations</option>
+                <option>Mangalore</option>
+                <option>Bangalore</option>
+                <option>Mysore</option>
+                <option>Udupi</option>
+
+              </select>
+
+            </div>
+
+            <div className="filter-item">
+
+              <FaStar />
+
+              <select>
+
+                <option>All Ratings</option>
+                <option>4★ & Above</option>
+                <option>4.5★ & Above</option>
+                <option>5★ Only</option>
+
+              </select>
 
             </div>
 
           </div>
 
-        ))}
+        </section>
+
+        {/* ===========================
+              RESULTS
+        =========================== */}
+
+        <section className="results-section">
+
+          <div className="results-header">
+
+            <h2>
+              {filteredUsers.length} Skill Partner
+              {filteredUsers.length !== 1 ? "s" : ""} Found
+            </h2>
+
+          </div>
+
+          {/* Continue in Part A3 */}
+                    <div className="explore-grid">
+
+            {filteredUsers.length > 0 ? (
+
+              filteredUsers.map((user) => (
+
+                <UserCard
+                  key={user.id}
+                  id={user.id}
+                  image={user.image}
+                  name={user.name}
+                  location={user.location}
+                  rating={user.rating}
+                  teachSkills={user.teachSkills}
+                  learnSkills={user.learnSkills}
+                />
+
+              ))
+
+            ) : (
+
+              <div className="no-results">
+
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/6134/6134065.png"
+                  alt="No Results"
+                />
+
+                <h3>No Skill Partners Found</h3>
+
+                <p>
+                  Try changing your search keyword or
+                  selecting a different category.
+                </p>
+
+              </div>
+
+            )}
+
+          </div>
+
+        </section>
 
       </div>
 
     </div>
+
   );
+
 }
 
 export default Explore;

@@ -1,105 +1,95 @@
 import React, { useState } from "react";
+import { FaSearch, FaMapMarkerAlt } from "react-icons/fa";
 import "./SearchBar.css";
-
-import {
-  FaSearch,
-  FaMapMarkerAlt,
-  FaFilter,
-} from "react-icons/fa";
 
 function SearchBar() {
   const [skill, setSkill] = useState("");
   const [location, setLocation] = useState("");
 
-  const handleSearch = () => {
-    alert(
-      `Searching for "${skill}" mentors in "${location || "Any Location"}"`
-    );
-  };
+  const popularSkills = [
+    "React",
+    "Python",
+    "UI/UX",
+    "Java",
+    "Photography",
+    "Cooking"
+  ];
 
   return (
     <section className="search-section">
 
-      <div className="search-header">
+      <div className="container">
 
-        <h2>Find the Perfect Mentor</h2>
+        <div className="search-header">
 
-        <p>
-          Search from hundreds of skilled mentors and start learning today.
-        </p>
+          <h2>Find the Perfect Skill Partner</h2>
 
-      </div>
-
-      <div className="search-container">
-
-        {/* Skill */}
-
-        <div className="input-box">
-
-          <FaSearch className="input-icon" />
-
-          <input
-            type="text"
-            placeholder="Search Skills (React, Photography, AI...)"
-            value={skill}
-            onChange={(e) => setSkill(e.target.value)}
-          />
+          <p>
+            Search for people who can teach the skills you want to learn.
+          </p>
 
         </div>
 
-        {/* Location */}
+        <div className="search-card">
 
-        <div className="input-box">
+          <div className="search-input">
 
-          <FaMapMarkerAlt className="input-icon" />
+            <FaSearch className="search-icon" />
 
-          <input
-            type="text"
-            placeholder="Location"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-          />
+            <input
+              type="text"
+              placeholder="Search skills (React, Python, Guitar...)"
+              value={skill}
+              onChange={(e) => setSkill(e.target.value)}
+            />
 
-        </div>
+          </div>
 
-        {/* Category */}
+          <div className="location-input">
 
-        <div className="input-box select-box">
+            <FaMapMarkerAlt className="location-icon" />
 
-          <FaFilter className="input-icon" />
+            <select
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+            >
+              <option value="">Anywhere</option>
+              <option>Mangalore</option>
+              <option>Bangalore</option>
+              <option>Mysore</option>
+              <option>Udupi</option>
+              <option>Online</option>
+            </select>
 
-          <select>
+          </div>
 
-            <option>All Categories</option>
-
-            <option>Programming</option>
-
-            <option>Photography</option>
-
-            <option>Music</option>
-
-            <option>Cooking</option>
-
-            <option>Graphic Design</option>
-
-            <option>Fitness</option>
-
-            <option>Artificial Intelligence</option>
-
-            <option>Languages</option>
-
-          </select>
+          <button className="search-btn">
+            Search
+          </button>
 
         </div>
 
-        {/* Search Button */}
+        <div className="popular-skills">
 
-        <button
-          className="search-btn"
-          onClick={handleSearch}
-        >
-          Search Mentor
-        </button>
+          <span>Popular Skills</span>
+
+          <div className="skill-tags">
+
+            {popularSkills.map((item, index) => (
+
+              <button
+                key={index}
+                className="tag"
+                onClick={() => setSkill(item)}
+              >
+                {item}
+              </button>
+
+            ))}
+
+          </div>
+
+        </div>
 
       </div>
 

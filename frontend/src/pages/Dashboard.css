@@ -1,18 +1,29 @@
 /* ==========================================
-   DASHBOARD
+        DASHBOARD
 ========================================== */
 
 .dashboard{
 
-    width:90%;
-    max-width:1400px;
+    min-height:100vh;
 
-    margin:100px auto;
+    background:#F6F8FC;
+
+    padding:40px 0 100px;
+
+}
+
+.dashboard .container{
+
+    max-width:1300px;
+
+    margin:auto;
+
+    padding:0 20px;
 
 }
 
 /* ==========================================
-   HEADER
+        HEADER
 ========================================== */
 
 .dashboard-header{
@@ -23,280 +34,65 @@
 
     align-items:center;
 
-    flex-wrap:wrap;
-
-    gap:20px;
+    gap:30px;
 
     margin-bottom:50px;
 
+    flex-wrap:wrap;
+
 }
 
-.dashboard-header h1{
+.dashboard-left h1{
 
     font-size:42px;
 
-    color:#1E293B;
-
-    margin-bottom:10px;
-
-}
-
-.dashboard-header p{
-
-    color:#64748B;
-
-    font-size:17px;
-
-}
-
-.dashboard-btn{
-
-    border:none;
-
-    padding:16px 30px;
-
-    border-radius:50px;
-
-    background:linear-gradient(135deg,#6366F1,#8B5CF6);
-
-    color:white;
-
-    font-size:16px;
-
-    font-weight:600;
-
-    cursor:pointer;
-
-    transition:.35s;
-
-    box-shadow:0 15px 35px rgba(99,102,241,.25);
-
-}
-
-.dashboard-btn:hover{
-
-    transform:translateY(-5px);
-
-    box-shadow:0 20px 40px rgba(99,102,241,.35);
-
-}
-
-/* ==========================================
-   STATS
-========================================== */
-
-.stats-grid{
-
-    display:grid;
-
-    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-
-    gap:25px;
-
-    margin-bottom:45px;
-
-}
-
-.stat-box{
-
-    background:#fff;
-
-    border-radius:20px;
-
-    padding:30px;
-
-    text-align:center;
-
-    box-shadow:0 12px 30px rgba(0,0,0,.08);
-
-    transition:.35s;
-
-}
-
-.stat-box:hover{
-
-    transform:translateY(-8px);
-
-    box-shadow:0 20px 40px rgba(99,102,241,.18);
-
-}
-
-.stat-icon{
-
-    font-size:38px;
-
-    color:#6366F1;
+    color:#222;
 
     margin-bottom:15px;
 
 }
 
-.stat-box h2{
+.dashboard-left span{
 
-    font-size:32px;
-
-    color:#1E293B;
-
-    margin-bottom:8px;
+    color:#5B4BFF;
 
 }
 
-.stat-box p{
+.dashboard-left p{
 
-    color:#64748B;
+    color:#666;
+
+    font-size:18px;
+
+    max-width:600px;
+
+    line-height:1.8;
 
 }
 
 /* ==========================================
-   MAIN CONTENT
+      PROFILE COMPLETION
 ========================================== */
 
-.dashboard-content{
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:30px;
-
-    margin-bottom:40px;
-
-}
-
-.dashboard-card{
+.profile-progress{
 
     background:white;
 
     border-radius:22px;
 
-    padding:30px;
+    padding:25px;
 
-    box-shadow:0 15px 35px rgba(0,0,0,.08);
+    width:320px;
 
-}
-
-.dashboard-card h2{
-
-    color:#1E293B;
-
-    margin-bottom:25px;
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
 
 }
 
-/* ==========================================
-   SESSIONS
-========================================== */
+.profile-progress h4{
 
-.session{
+    margin-bottom:18px;
 
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    padding:18px 0;
-
-    border-bottom:1px solid #E5E7EB;
-
-}
-
-.session:last-child{
-
-    border-bottom:none;
-
-}
-
-.session h3{
-
-    color:#1E293B;
-
-    margin-bottom:5px;
-
-}
-
-.session p{
-
-    color:#64748B;
-
-    font-size:14px;
-
-}
-
-.session span{
-
-    color:#6366F1;
-
-    font-weight:600;
-
-}
-
-.dashboard-card button{
-
-    margin-top:20px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:8px;
-
-    padding:12px 22px;
-
-    border:none;
-
-    border-radius:30px;
-
-    background:linear-gradient(135deg,#6366F1,#8B5CF6);
-
-    color:white;
-
-    cursor:pointer;
-
-    font-weight:600;
-
-    transition:.35s;
-
-}
-
-.dashboard-card button:hover{
-
-    transform:translateY(-4px);
-
-}
-/* ==========================================
-   PROGRESS SECTION
-========================================== */
-
-.progress-box{
-
-    margin-bottom:25px;
-
-}
-
-.progress-box p{
-
-    color:#1E293B;
-
-    font-weight:600;
-
-    margin-bottom:10px;
-
-}
-
-.progress-box span{
-
-    display:block;
-
-    text-align:right;
-
-    color:#6366F1;
-
-    font-size:14px;
-
-    font-weight:600;
-
-    margin-top:8px;
+    color:#333;
 
 }
 
@@ -306,300 +102,302 @@
 
     height:12px;
 
-    background:#E5E7EB;
+    border-radius:30px;
 
-    border-radius:20px;
+    background:#E7EAF8;
 
     overflow:hidden;
 
 }
 
-.progress{
+.progress-fill{
 
     height:100%;
 
-    border-radius:20px;
+    border-radius:30px;
 
-    animation:progressAnimation 2s ease;
-
-}
-
-.react{
-
-    width:80%;
-
-    background:linear-gradient(90deg,#6366F1,#8B5CF6);
+    background:linear-gradient(135deg,#5B4BFF,#8F7CFF);
 
 }
 
-.design{
+.profile-progress span{
 
-    width:65%;
+    display:block;
 
-    background:linear-gradient(90deg,#EC4899,#F472B6);
+    margin-top:12px;
 
-}
+    font-weight:700;
 
-.ai{
-
-    width:45%;
-
-    background:linear-gradient(90deg,#06B6D4,#3B82F6);
+    color:#5B4BFF;
 
 }
 
 /* ==========================================
-   REQUEST TABLE
+        STATS
 ========================================== */
 
-.requests{
+.stats-section{
 
-    overflow-x:auto;
-
-}
-
-.requests table{
-
-    width:100%;
-
-    border-collapse:collapse;
+    margin-bottom:70px;
 
 }
 
-.requests th{
+.stats-grid{
 
-    text-align:left;
+    display:grid;
 
-    padding:16px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 
-    background:#F8FAFC;
-
-    color:#1E293B;
-
-    font-weight:600;
+    gap:30px;
 
 }
 
-.requests td{
+.stat-card{
 
-    padding:16px;
+    background:white;
 
-    border-bottom:1px solid #E5E7EB;
+    border-radius:24px;
 
-    color:#475569;
+    padding:28px;
 
-}
+    display:flex;
 
-/* ==========================================
-   STATUS BADGES
-========================================== */
+    align-items:center;
 
-.accepted{
+    gap:22px;
 
-    color:#16A34A;
-
-    font-weight:700;
-
-}
-
-.pending{
-
-    color:#F59E0B;
-
-    font-weight:700;
-
-}
-
-.completed{
-
-    color:#6366F1;
-
-    font-weight:700;
-
-}
-
-/* ==========================================
-   HOVER EFFECTS
-========================================== */
-
-.dashboard-card{
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
 
     transition:.35s;
 
 }
 
-.dashboard-card:hover{
+.stat-card:hover{
 
     transform:translateY(-8px);
 
-    box-shadow:0 20px 45px rgba(99,102,241,.15);
+    box-shadow:0 20px 45px rgba(91,75,255,.15);
 
 }
 
-.stat-box:hover .stat-icon{
+.stat-icon{
 
-    transform:scale(1.15) rotate(-8deg);
+    width:72px;
 
-    transition:.3s;
+    height:72px;
 
-}
+    border-radius:20px;
 
-/* ==========================================
-   ANIMATIONS
-========================================== */
+    display:flex;
 
-@keyframes progressAnimation{
+    justify-content:center;
 
-    from{
+    align-items:center;
 
-        width:0;
+    color:white;
 
-    }
+    font-size:30px;
 
 }
 
-.dashboard{
+.stat-card h2{
 
-    animation:fadeDashboard .8s ease;
+    font-size:34px;
 
-}
+    color:#222;
 
-@keyframes fadeDashboard{
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(30px);
-
-    }
-
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
-    }
+    margin-bottom:8px;
 
 }
 
-/* ==========================================
-   RESPONSIVE
-========================================== */
+.stat-card p{
 
-@media(max-width:992px){
+    color:#666;
 
-.dashboard-content{
+    font-size:16px;
 
-grid-template-columns:1fr;
+}
+/* ==========================
+      LEARNING STREAK
+========================== */
+
+.streak-section{
+
+margin:80px 0;
 
 }
 
-.dashboard-header h1{
+.streak-card{
 
-font-size:34px;
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+flex-wrap:wrap;
+
+gap:20px;
+
+padding:35px;
+
+border-radius:28px;
+
+background:linear-gradient(135deg,#5B4BFF,#8F7CFF);
+
+color:white;
+
+box-shadow:0 20px 45px rgba(91,75,255,.25);
 
 }
+
+.streak-left{
+
+display:flex;
+
+align-items:center;
+
+gap:25px;
+
+}
+
+.streak-icon{
+
+font-size:55px;
+
+}
+
+.streak-left h2{
+
+margin-bottom:10px;
+
+}
+
+.streak-left p{
+
+opacity:.9;
+
+}
+
+.streak-btn{
+
+border:none;
+
+padding:15px 30px;
+
+border-radius:15px;
+
+font-size:16px;
+
+font-weight:600;
+
+background:white;
+
+color:#5B4BFF;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.streak-btn:hover{
+
+transform:translateY(-3px);
+
+}
+
+/* ==========================
+      ACHIEVEMENTS
+========================== */
+
+.achievement-section{
+
+margin-bottom:80px;
+
+}
+
+.achievement-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+gap:25px;
+
+margin-top:35px;
+
+}
+
+.achievement-card{
+
+background:white;
+
+padding:30px;
+
+border-radius:22px;
+
+text-align:center;
+
+box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+transition:.35s;
+
+}
+
+.achievement-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 20px 45px rgba(91,75,255,.18);
+
+}
+
+.achievement-card svg{
+
+font-size:45px;
+
+color:#5B4BFF;
+
+margin-bottom:18px;
+
+}
+
+.achievement-card h3{
+
+margin-bottom:12px;
+
+color:#222;
+
+}
+
+.achievement-card p{
+
+color:#666;
+
+line-height:1.7;
 
 }
 
 @media(max-width:768px){
 
-.dashboard{
-
-margin:70px auto;
-
-}
-
-.dashboard-header{
+.streak-card{
 
 flex-direction:column;
 
-align-items:flex-start;
+text-align:center;
 
 }
 
-.dashboard-header h1{
+.streak-left{
 
-font-size:30px;
+flex-direction:column;
 
 }
 
-.dashboard-btn{
+.streak-btn{
 
 width:100%;
-
-}
-
-.stats-grid{
-
-grid-template-columns:repeat(2,1fr);
-
-}
-
-.dashboard-card{
-
-padding:24px;
-
-}
-
-.requests table{
-
-font-size:14px;
-
-}
-
-}
-
-@media(max-width:480px){
-
-.dashboard-header h1{
-
-font-size:26px;
-
-}
-
-.stats-grid{
-
-grid-template-columns:1fr;
-
-}
-
-.stat-box{
-
-padding:25px;
-
-}
-
-.dashboard-card{
-
-padding:20px;
-
-}
-
-.session{
-
-flex-direction:column;
-
-align-items:flex-start;
-
-gap:10px;
-
-}
-
-.requests th,
-.requests td{
-
-padding:12px;
-
-font-size:13px;
-
-}
-
-.progress-box p{
-
-font-size:14px;
 
 }
 

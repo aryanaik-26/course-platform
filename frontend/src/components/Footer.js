@@ -1,6 +1,5 @@
 import React from "react";
-import "./Footer.css";
-
+import { Link } from "react-router-dom";
 import {
   FaFacebookF,
   FaInstagram,
@@ -8,43 +7,48 @@ import {
   FaGithub,
   FaEnvelope,
   FaPhoneAlt,
-  FaMapMarkerAlt,
+  FaMapMarkerAlt
 } from "react-icons/fa";
 
-import logo from "../assets/logo.png";
+import "./Footer.css";
 
 function Footer() {
   return (
     <footer className="footer">
 
-      <div className="footer-container">
+      <div className="container footer-container">
 
-        {/* Logo Section */}
+        {/* Left */}
 
         <div className="footer-about">
 
-          <div className="footer-logo">
-
-            <img src={logo} alt="SkillSync Logo" />
-
-            <h2>SkillSync</h2>
-
-          </div>
+          <h2>
+            Skill<span>Bridge</span>
+          </h2>
 
           <p>
-            SkillSync connects passionate learners with experienced mentors.
-            Learn new skills, teach what you know, and grow together.
+            A peer-to-peer skill sharing platform where
+            passionate learners and mentors connect,
+            exchange knowledge, and grow together.
           </p>
 
           <div className="social-icons">
 
-            <a href="#"><FaFacebookF /></a>
+            <a href="/">
+              <FaFacebookF />
+            </a>
 
-            <a href="#"><FaInstagram /></a>
+            <a href="/">
+              <FaInstagram />
+            </a>
 
-            <a href="#"><FaLinkedinIn /></a>
+            <a href="/">
+              <FaLinkedinIn />
+            </a>
 
-            <a href="#"><FaGithub /></a>
+            <a href="/">
+              <FaGithub />
+            </a>
 
           </div>
 
@@ -56,19 +60,13 @@ function Footer() {
 
           <h3>Quick Links</h3>
 
-          <ul>
+          <Link to="/">Home</Link>
 
-            <li><a href="/">Home</a></li>
+          <Link to="/explore">Explore</Link>
 
-            <li><a href="/explore">Explore</a></li>
+          <Link to="/dashboard">Dashboard</Link>
 
-            <li><a href="/dashboard">Dashboard</a></li>
-
-            <li><a href="/requests">Requests</a></li>
-
-            <li><a href="/login">Login</a></li>
-
-          </ul>
+          <Link to="/requests">Requests</Link>
 
         </div>
 
@@ -78,19 +76,13 @@ function Footer() {
 
           <h3>Popular Skills</h3>
 
-          <ul>
+          <Link to="/explore">Web Development</Link>
 
-            <li>Programming</li>
+          <Link to="/explore">UI/UX Design</Link>
 
-            <li>Photography</li>
+          <Link to="/explore">Photography</Link>
 
-            <li>Graphic Design</li>
-
-            <li>Music</li>
-
-            <li>Cooking</li>
-
-          </ul>
+          <Link to="/explore">Public Speaking</Link>
 
         </div>
 
@@ -100,39 +92,37 @@ function Footer() {
 
           <h3>Contact</h3>
 
-          <p>
+          <div>
 
-            <FaEnvelope className="icon" />
+            <FaEnvelope />
 
-            support@skillsync.com
+            <span>support@skillbridge.com</span>
 
-          </p>
+          </div>
 
-          <p>
+          <div>
 
-            <FaPhoneAlt className="icon" />
+            <FaPhoneAlt />
 
-            +91 9876543210
+            <span>+91 98765 43210</span>
 
-          </p>
+          </div>
 
-          <p>
+          <div>
 
-            <FaMapMarkerAlt className="icon" />
+            <FaMapMarkerAlt />
 
-            Mangalore, Karnataka
+            <span>Mangalore, Karnataka</span>
 
-          </p>
+          </div>
 
         </div>
 
       </div>
 
-      <hr />
-
       <div className="footer-bottom">
 
-        © 2026 SkillSync. All Rights Reserved.
+        © 2026 SkillBridge. All Rights Reserved.
 
       </div>
 

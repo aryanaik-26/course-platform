@@ -1,136 +1,125 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Requests.css";
 
-function Requests() {
-
-  const [requests, setRequests] = useState([
-    {
-      id: 1,
-      name: "Ananya Patel",
-      skill: "React Development",
-      message:
-        "I would like to learn React and build real-world projects.",
-      status: "Pending"
-    },
-    {
-      id: 2,
-      name: "Arjun Kumar",
-      skill: "UI/UX Design",
-      message:
-        "Interested in learning modern design principles.",
-      status: "Pending"
-    }
-  ]);
+import {
+  FaUserGraduate,
+  FaBookOpen,
+  FaMapMarkerAlt,
+  FaCheck,
+  FaTimes
+} from "react-icons/fa";
 
 
-  const updateRequest = (id, status) => {
-
-    setRequests(
-      requests.map((request) =>
-        request.id === id
-          ? { ...request, status }
-          : request
-      )
-    );
-
-  };
-
+function RequestCard({
+  userImage,
+  userName,
+  location,
+  wantsToLearn,
+  canTeach,
+  status,
+  onAccept,
+  onReject
+}) {
 
   return (
 
-    <div className="requests-page">
+    <div className="request-card">
 
 
-      <div className="requests-container">
+      <div className="request-user">
 
-        <h1>
-          Skill Requests
-        </h1>
-
-        <p className="requests-subtitle">
-          Manage requests from learners who want to connect with you.
-        </p>
+        <img
+          src={userImage}
+          alt={userName}
+        />
 
 
+        <div>
 
-        <div className="request-list">
+          <h3>{userName}</h3>
 
-          {
-            requests.map((request) => (
-
-              <div
-                className="request-card"
-                key={request.id}
-              >
-
-                <div className="request-info">
-
-                  <h3>
-                    {request.name}
-                  </h3>
-
-
-                  <h4>
-                    Skill: {request.skill}
-                  </h4>
-
-
-                  <p>
-                    {request.message}
-                  </p>
-
-
-                  <span className={`status ${request.status.toLowerCase()}`}>
-                    {request.status}
-                  </span>
-
-
-                </div>
-
-
-
-                {
-                  request.status === "Pending" && (
-
-                    <div className="request-actions">
-
-                      <button
-                        className="accept-btn"
-                        onClick={() =>
-                          updateRequest(
-                            request.id,
-                            "Accepted"
-                          )
-                        }
-                      >
-                        Accept
-                      </button>
-
-
-                      <button
-                        className="reject-btn"
-                        onClick={() =>
-                          updateRequest(
-                            request.id,
-                            "Rejected"
-                          )
-                        }
-                      >
-                        Reject
-                      </button>
-
-                    </div>
-
-                  )
-                }
-
-
-              </div>
-
-            ))
-          }
+          <p>
+            <FaMapMarkerAlt />
+            {location}
+          </p>
 
         </div>
+
+      </div>
+
+
+
+      <div className="request-details">
+
+
+        <div>
+
+          <h4>
+            <FaBookOpen />
+            Wants to Learn
+          </h4>
+
+          <span>
+            {wantsToLearn}
+          </span>
+
+        </div>
+
+
+
+        <div>
+
+          <h4>
+            <FaUserGraduate />
+            Can Teach
+          </h4>
+
+          <span>
+            {canTeach}
+          </span>
+
+        </div>
+
+
+      </div>
+
+
+
+      <div className="request-status">
+
+        <span className={`status ${status?.toLowerCase()}`}>
+          {status}
+        </span>
+
+      </div>
+
+
+
+
+      <div className="request-buttons">
+
+
+        <button
+          className="accept-btn"
+          onClick={onAccept}
+        >
+
+          <FaCheck />
+          Accept
+
+        </button>
+
+
+
+        <button
+          className="reject-btn"
+          onClick={onReject}
+        >
+
+          <FaTimes />
+          Reject
+
+        </button>
 
 
       </div>
@@ -139,7 +128,8 @@ function Requests() {
     </div>
 
   );
+
 }
 
 
-export default Requests;
+export default RequestCard;

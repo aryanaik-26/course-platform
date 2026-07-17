@@ -1,142 +1,85 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { FaArrowRight, FaPlayCircle } from "react-icons/fa";
+
+import heroImage from "../assets/hero-image.png";
+
 import "./Hero.css";
-
-import hero from "../assets/hero-image.png";
-
-import {
-  FaArrowRight,
-  FaUserGraduate,
-  FaChalkboardTeacher,
-  FaBookOpen,
-  FaStar,
-} from "react-icons/fa";
 
 function Hero() {
   return (
     <section className="hero">
 
-      {/* Floating Background Blobs */}
+      <div className="hero-shape shape1"></div>
+      <div className="hero-shape shape2"></div>
 
-      <div className="blob blob1"></div>
-      <div className="blob blob2"></div>
-      <div className="blob blob3"></div>
+      <div className="container hero-container">
 
-      <div className="hero-container">
+        <div className="hero-left">
 
-        {/* LEFT SIDE */}
-
-        <div className="hero-content">
-
-          <span className="hero-badge">
-            🚀 India's Growing Skill Sharing Community
+          <span className="hero-tag">
+            🚀 India's Next Skill Sharing Community
           </span>
 
           <h1>
-            Learn New Skills.
+            Teach What You Know.
             <br />
-            <span>Teach What You Love.</span>
+            Learn What You Need.
           </h1>
 
           <p>
-            SkillSync connects passionate learners with experienced mentors.
-            Whether you want to master programming, photography, music,
-            cooking, fitness or AI, find the perfect mentor or become one.
+            Connect with passionate learners and mentors.
+            Exchange skills, build meaningful connections,
+            and grow together through real people—not pre-recorded courses.
           </p>
 
           <div className="hero-buttons">
 
-            <button className="primary-btn">
-              Find a Mentor
-              <FaArrowRight />
-            </button>
+            <Link to="/explore">
+              <button className="primary-btn">
+                Explore Skills
+                <FaArrowRight />
+              </button>
+            </Link>
 
             <button className="secondary-btn">
-              Become a Mentor
+              <FaPlayCircle />
+              How It Works
             </button>
 
           </div>
 
-          {/* Statistics */}
-
           <div className="hero-stats">
 
-            <div className="stat-card">
-
-              <FaUserGraduate className="stat-icon" />
-
-              <h2>1200+</h2>
-
-              <p>Learners</p>
-
+            <div>
+              <h2>1000+</h2>
+              <span>Members</span>
             </div>
 
-            <div className="stat-card">
-
-              <FaChalkboardTeacher className="stat-icon" />
-
-              <h2>450+</h2>
-
-              <p>Mentors</p>
-
+            <div>
+              <h2>500+</h2>
+              <span>Skills</span>
             </div>
 
-            <div className="stat-card">
-
-              <FaBookOpen className="stat-icon" />
-
-              <h2>80+</h2>
-
-              <p>Skills</p>
-
+            <div>
+              <h2>4.9★</h2>
+              <span>User Rating</span>
             </div>
 
           </div>
 
         </div>
 
-        {/* RIGHT SIDE */}
+        <div className="hero-right">
 
-        <div className="hero-image">
-
-          <img src={hero} alt="Hero Illustration" />
-
-          {/* Floating Cards */}
-
-          <div className="floating-card mentor-card">
-
-            <h4>⭐ Top Mentor</h4>
-
-            <p>React Development</p>
-
-            <small>4.9 Rating</small>
-
-          </div>
-
-          <div className="floating-card student-card">
-
-            <FaStar />
-
-            <span>1000+ Happy Learners</span>
-
-          </div>
+          <img
+            src={heroImage}
+            alt="Skill Sharing"
+          />
 
         </div>
 
       </div>
-
-      {/* Bottom Wave */}
-
-      <svg
-        className="wave"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1440 320"
-      >
-        <path
-          fill="#ffffff"
-          fillOpacity="1"
-          d="M0,160L60,176C120,192,240,224,360,224C480,224,600,192,720,176C840,160,960,160,1080,176C1200,192,1320,224,1380,240L1440,256L1440,320L0,320Z"
-        ></path>
-      </svg>
 
     </section>
   );
