@@ -1,8 +1,4 @@
-import {
-  FaFire,
-  FaMedal,
-  FaCheckCircle
-} from "react-icons/fa";import React from "react";
+import React from "react";
 import "./Dashboard.css";
 
 
