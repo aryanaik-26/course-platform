@@ -1,40 +1,27 @@
 const express = require("express");
 const router = express.Router();
 
-const protect = require(
-  "../middleware/authMiddleware"
-);
+const protect = require("../middleware/authMiddleware");
 
 const {
   getMentors,
-  getCurrentUser,
-  getDashboardStats,
+  getFeaturedUsers,
+  getUserById,
+  getProfile,
   updateProfile,
-} = require(
-  "../controllers/userController"
-);
+} = require("../controllers/userController");
 
-router.get(
-  "/me",
-  protect,
-  getCurrentUser
-);
+// Public Routes
+router.get("/mentors", getMentors);
+router.get("/featured", getFeaturedUsers);
 
-router.get(
-  "/dashboard",
-  protect,
-  getDashboardStats
-);
+// Protected Route
+router.get("/profile", protect, getProfile);
 
-router.get(
-  "/mentors",
-  getMentors
-);
+// User Details
+router.get("/:id", getUserById);
 
-router.put(
-  "/:id",
-  protect,
-  updateProfile
-);
+// Update Profile
+router.put("/:id", protect, updateProfile);
 
 module.exports = router;

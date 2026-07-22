@@ -4,7 +4,9 @@ const requestRoutes = require("./routes/requestRoutes");
 const authRoutes = require("./routes/authRoutes");
 const userRoutes = require("./routes/userRoutes");
 const app = express();
+const homeRoutes = require("./routes/homeRoutes");
 
+app.use("/api/home", homeRoutes);
 app.use(cors());
 app.use(express.json());
 app.use("/api/requests", requestRoutes);

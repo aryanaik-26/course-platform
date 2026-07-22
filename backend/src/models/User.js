@@ -29,6 +29,26 @@ const userSchema = new mongoose.Schema(
       default: "",
     },
 
+    location: {
+      type: String,
+      default: "",
+    },
+
+    experience: {
+      type: String,
+      default: "",
+    },
+
+    rating: {
+      type: Number,
+      default: 5,
+    },
+
+    sessions: {
+      type: Number,
+      default: 0,
+    },
+
     skillsOffered: [
       {
         type: String,
@@ -40,20 +60,6 @@ const userSchema = new mongoose.Schema(
         type: String,
       },
     ],
-    location: {
-  type: String,
-  default: ""
-},
-
-experience: {
-  type: String,
-  default: ""
-},
-
-rating: {
-  type: Number,
-  default: 5
-},
 
     profilePicture: {
       type: String,

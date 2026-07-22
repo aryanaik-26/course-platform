@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import "./Home.css";
+
 import Hero from "../components/Hero";
 import SearchBar from "../components/SearchBar";
 import HowItWorks from "../components/HowItWorks";
@@ -7,77 +9,61 @@ import SkillCard from "../components/SkillCard";
 import Testimonials from "../components/Testimonials";
 import Footer from "../components/Footer";
 
-import categories from "../data/categories";
-import skills from "../data/skills";
-
-import "./Home.css";
+import { getHomeData } from "../services/userService";
 
 function Home() {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    loadHomeData();
+  }, []);
+
+  const loadHomeData = async () => {
+    try {
+      const data = await getHomeData();
+      setCategories(data.categories);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="home">
 
-      {/* Hero Section */}
       <Hero />
 
-      {/* Search Section */}
       <SearchBar />
 
+      {/* Categories */}
 
-      {/* Categories Section */}
       <section className="categories-section">
+
         <div className="section-header">
+
           <h2>Explore Categories</h2>
+
           <p>
             Discover skills from different fields and learn from experts.
           </p>
+
         </div>
 
         <div className="category-container">
-          {categories.map((category) => (
-            <CategoryCard
-              key={category.id}
-              title={category.title}
-              icon={category.icon}
-              description={category.description}
-            />
-          ))}
+
+          <CategoryCard categories={categories} />
+
         </div>
+
       </section>
 
-
-      {/* How It Works */}
       <HowItWorks />
 
+      {/* Featured Mentors */}
 
-      {/* Popular Skills */}
-      <section className="skills-section">
-        <div className="section-header">
-          <h2>Popular Skills</h2>
-          <p>
-            Start learning trending skills from experienced mentors.
-          </p>
-        </div>
+      <SkillCard />
 
-        <div className="skills-container">
-          {skills.map((skill) => (
-            <SkillCard
-              key={skill.id}
-              image={skill.image}
-              title={skill.title}
-              instructor={skill.instructor}
-              rating={skill.rating}
-              learners={skill.learners}
-            />
-          ))}
-        </div>
-      </section>
-
-
-      {/* Testimonials */}
       <Testimonials />
 
-
-      {/* Footer */}
       <Footer />
 
     </div>

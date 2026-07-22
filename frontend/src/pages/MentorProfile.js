@@ -1,154 +1,157 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import "./MentorProfile.css";
 
-function MentorProfile() {
+import { getUserById } from "../services/userService";
 
+function MentorProfile() {
   const { id } = useParams();
 
+  const [mentor, setMentor] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  // Temporary mentor data (replace with Firebase data later)
-  const mentor = {
-    id: id,
-    name: "Rahul Sharma",
-    role: "Full Stack Developer",
-    image: "/assets/mentor1.jpg",
-    rating: "4.8",
-    students: "1200+",
-    experience: "5 Years",
-    skills: [
-      "React",
-      "Node.js",
-      "MongoDB",
-      "JavaScript"
-    ],
-    bio:
-      "Experienced full stack developer passionate about teaching modern web technologies and helping students build real-world projects."
+  useEffect(() => {
+    loadMentor();
+  }, [id]);
+
+  const loadMentor = async () => {
+    try {
+      const data = await getUserById(id);
+      setMentor(data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
+  if (loading) {
+    return (
+      <div className="mentor-profile-page">
+        <h2>Loading mentor...</h2>
+      </div>
+    );
+  }
+
+  if (!mentor) {
+    return (
+      <div className="mentor-profile-page">
+        <h2>Mentor not found</h2>
+      </div>
+    );
+  }
 
   return (
-
     <div className="mentor-profile-page">
 
-
       <div className="mentor-profile-card">
-
-
-        {/* Profile Header */}
 
         <div className="mentor-header">
 
           <img
-            src={mentor.image}
+            src={
+              mentor.profilePicture ||
+              "https://via.placeholder.com/250?text=Mentor"
+            }
             alt={mentor.name}
             className="mentor-image"
           />
 
-
           <div className="mentor-info">
 
-            <h1>
-              {mentor.name}
-            </h1>
+            <h1>{mentor.name}</h1>
 
             <h3>
-              {mentor.role}
+              {mentor.skillsOffered?.length
+                ? mentor.skillsOffered.join(", ")
+                : "No Skills Added"}
             </h3>
-
 
             <div className="mentor-stats">
 
               <span>
-                ⭐ {mentor.rating} Rating
+                ⭐ {mentor.rating || "5.0"} Rating
               </span>
 
               <span>
-                👨‍🎓 {mentor.students} Students
+                👨‍🎓 {mentor.sessions || 0} Sessions
               </span>
 
               <span>
-                💼 {mentor.experience}
+                💼 {mentor.experience || "New Mentor"}
               </span>
 
             </div>
 
-
           </div>
 
         </div>
 
-
-
-        {/* About Mentor */}
-
         <section className="mentor-section">
 
-          <h2>
-            About Mentor
-          </h2>
+          <h2>About Mentor</h2>
 
           <p>
-            {mentor.bio}
+            {mentor.bio || "No bio available."}
           </p>
 
         </section>
 
-
-
-
-        {/* Skills */}
-
         <section className="mentor-section">
 
-          <h2>
-            Skills
-          </h2>
-
+          <h2>Skills Offered</h2>
 
           <div className="mentor-skills">
 
-            {
-              mentor.skills.map((skill, index) => (
-
+            {mentor.skillsOffered?.length > 0 ? (
+              mentor.skillsOffered.map((skill, index) => (
                 <span key={index}>
                   {skill}
                 </span>
-
               ))
-            }
+            ) : (
+              <p>No skills added.</p>
+            )}
 
           </div>
 
         </section>
 
+        <section className="mentor-section">
 
+          <h2>Skills Wanted</h2>
 
+          <div className="mentor-skills">
 
-        {/* Action */}
+            {mentor.skillsWanted?.length > 0 ? (
+              mentor.skillsWanted.map((skill, index) => (
+                <span key={index}>
+                  {skill}
+                </span>
+              ))
+            ) : (
+              <p>No learning goals added.</p>
+            )}
+
+          </div>
+
+        </section>
 
         <div className="mentor-action">
 
           <Link
-            to="/contact"
+            to="/explore"
             className="contact-btn"
           >
-            Connect With Mentor
+            Back to Explore
           </Link>
-
 
         </div>
 
-
-
       </div>
 
-
     </div>
-
   );
-
 }
-
 
 export default MentorProfile;
